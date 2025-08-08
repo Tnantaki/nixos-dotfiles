@@ -121,6 +121,8 @@
       ".." = "cd ..";
       pbcopy = "xclip -selection c";
       pbpaste = "xclip -selection c -o";
+      dotfile = "code ~/.dotfiles";
+      nixtran = "sudo cp ~/.dotfiles/* /etc/nixos";
     };
   };
 
@@ -133,32 +135,36 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # Development
     vim
     wget
     curl
     git
     zsh
+    gcc
+    gnumake
+    binutils
+    pkg-config
     starship
-    vscode
     cargo
     rustc
     rustup
     nodejs_24
     bun
-    discord
+    vscode
     zed-editor
-    ghostty
-    bat
-    xclip
+    # Internet
     google-chrome
     brave
-    htop
-    gcc
-    gnumake
-    binutils
-    pkg-config
+    discord
+    # Multimedia
     mpv
     vlc
+    # Utils
+    xclip
+    ghostty
+    bat
+    htop
     ffmpeg
     file-roller
   ];
