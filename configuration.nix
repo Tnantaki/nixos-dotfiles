@@ -4,6 +4,9 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./packages/system.nix
+      ./packages/font.nix
+      ./programs/zsh.nix
     ];
 
   # Bootloader.
@@ -107,74 +110,9 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    enableBashCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    shellInit = ''
-      eval "$(starship init zsh)";
-    '';
-
-    shellAliases = {
-      ".." = "cd ..";
-      pbcopy = "xclip -selection c";
-      pbpaste = "xclip -selection c -o";
-      dotfile = "code ~/.dotfiles";
-      nixtran = "sudo cp ~/.dotfiles/* /etc/nixos";
-    };
-  };
-
-  programs.zsh.ohMyZsh = {
-    enable = true;
-    plugins = [ "git" ];
-  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    # Development
-    vim
-    wget
-    curl
-    git
-    zsh
-    gcc
-    gnumake
-    binutils
-    pkg-config
-    starship
-    cargo
-    rustc
-    rustup
-    nodejs_24
-    bun
-    vscode
-    zed-editor
-    # Internet
-    google-chrome
-    brave
-    discord
-    # Multimedia
-    mpv
-    vlc
-    # Utils
-    xclip
-    ghostty
-    bat
-    htop
-    ffmpeg
-    file-roller
-  ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.hack
-    nerd-fonts.fira-code
-    noto-fonts
-    noto-fonts-extra
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
