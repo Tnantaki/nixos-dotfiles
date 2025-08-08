@@ -48,8 +48,17 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "us";
+    layout = "us,th";
     variant = "";
+
+    # Add Manoonchai Layout
+    extraLayouts = {
+      th = {
+        description = "Manoonchai Layout";
+        languages = [ "th" ];
+        symbolsFile = ./Manoonchai_xkb;
+      };
+    };
   };
 
   # Enable CUPS to print documents.
@@ -87,6 +96,13 @@
     ];
   };
 
+  users.users.alice = {
+    isNormalUser = true;
+    description = "Alice";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -96,6 +112,15 @@
     enableBashCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
+    shellInit = ''
+      eval "$(starship init zsh)";
+    '';
+
+    shellAliases = {
+      ".." = "cd ..";
+      pbcopy = "xclip -selection c";
+      pbpaste = "xclip -selection c -o";
+    };
   };
 
   programs.zsh.ohMyZsh = {
@@ -117,23 +142,32 @@
     cargo
     rustc
     rustup
+    nodejs_24
+    bun
     discord
     zed-editor
     ghostty
     bat
     xclip
     google-chrome
+    brave
     htop
     gcc
     gnumake
     binutils
     pkg-config
+    mpv
+    vlc
+    ffmpeg
+    file-roller
   ];
 
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
     nerd-fonts.fira-code
+    noto-fonts
+    noto-fonts-extra
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
