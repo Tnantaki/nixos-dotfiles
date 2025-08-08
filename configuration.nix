@@ -19,7 +19,7 @@
 
   networking.networkmanager.enable = true;
 
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "Asia/Bangkok";
 
@@ -50,6 +50,7 @@
   services.xserver.xkb = {
     layout = "us,th";
     variant = "";
+    options = "grp:win_space_toggle";
 
     # Add Manoonchai Layout
     extraLayouts = {
@@ -99,7 +100,7 @@
   users.users.alice = {
     isNormalUser = true;
     description = "Alice";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" ];
     shell = pkgs.zsh;
   };
 
@@ -161,7 +162,6 @@
     ffmpeg
     file-roller
   ];
-
 
   fonts.packages = with pkgs; [
     nerd-fonts.hack
