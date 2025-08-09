@@ -16,11 +16,12 @@
     cargo
     rustc
     rustup
-    rust-analyzer
     nodejs_24
     bun
     vscode
     zed-editor
+    rust-analyzer
+    package-version-server
     # Internet
     google-chrome
     brave

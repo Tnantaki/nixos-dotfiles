@@ -13,7 +13,7 @@
 
     # Add Manoonchai Layout
     extraLayouts = {
-      ThaiMnc = {
+      th = {
         description = "Manoonchai Layout";
         languages = [ "tha" ];
         symbolsFile = ./Manoonchai_xkb;
