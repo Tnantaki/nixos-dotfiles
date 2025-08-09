@@ -15,7 +15,7 @@
       ".." = "cd ..";
       pbcopy = "xclip -selection c";
       pbpaste = "xclip -selection c -o";
-      dotfile = "code ~/.dotfiles";
+      dotfile = "zeditor ~/.dotfiles";
       nixtran = "sudo cp -r ~/.dotfiles/* /etc/nixos";
     };
   };

@@ -16,6 +16,7 @@
     cargo
     rustc
     rustup
+    rust-analyzer
     nodejs_24
     bun
     vscode
@@ -34,6 +35,9 @@
     htop
     ffmpeg
     file-roller
+    rar
+    unrar
     tree
+    libnotify
   ];
 }
