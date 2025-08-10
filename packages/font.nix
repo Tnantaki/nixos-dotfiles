@@ -6,5 +6,6 @@
     nerd-fonts.fira-code
     noto-fonts
     noto-fonts-extra
+    noto-fonts-cjk-sans
   ];
 }
