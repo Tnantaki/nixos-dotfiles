@@ -20,6 +20,10 @@
     package-version-server # handles hover information in package.json files
     nixd # Nix language server
     nil # Nix language server
+    
+    # For proc-macro compatibility on Rust
+    libllvm
+    libclang
 
     # Compiler, Runtime, Package Management
     gcc
@@ -59,7 +63,6 @@
     tree
     libnotify
     transmission_4
-    latte-dock
   ];
 
   services.transmission = {

@@ -96,6 +96,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "transmission"
       "libvirtd" # KVM
       "qemu-libvirtd" # KVM
     ];
