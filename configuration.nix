@@ -8,6 +8,7 @@
       ./packages/font.nix
       ./programs/zsh.nix
       ./peripheral/keyboard.nix
+      ./systems/network.nix
     ];
 
   # Bootloader.
@@ -15,7 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5; # list only 5 generations
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # Mount Disk
   fileSystems."/mnt/archive" = {
     device = "/dev/disk/by-uuid/4e149ab6-4527-4c19-8c7c-11dec5a4107e";
@@ -28,14 +29,19 @@
     options = [ "nofail" "rw" "uid=1000" "gid=100" ];
   };
 
+  virtualisation.libvirtd.enable = true; # KVM
+
+  boot.kernelModules = [ "kvm-amd" ]; # KVM
+
   networking.hostName = "nixos";
+  
+  networking.networkmanager.enable = true;
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  networking.networkmanager.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -87,7 +93,12 @@
   users.users.tnantaki = {
     isNormalUser = true;
     description = "PeterMos";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd" # KVM
+      "qemu-libvirtd" # KVM
+    ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
@@ -105,7 +116,6 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -121,12 +131,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }

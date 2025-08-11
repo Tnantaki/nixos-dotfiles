@@ -24,4 +24,9 @@
     enable = true;
     plugins = [ "git" ];
   };
+  
+  # environment.variables = {
+  #   ANDROID_HOME = "$HOME/Android/Sdk";
+  #   PATH = "${toString (pkgs.lib.makeBinPath [ ])}:$PATH:$HOME/Android/Sdk/emulator:$HOME/Android/Sdk/platform-tools";
+  # };
 }

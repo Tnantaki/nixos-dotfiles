@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{ pkgs, ...}:
 
 {
   environment.systemPackages = with pkgs; [
@@ -8,27 +8,45 @@
     curl
     git
     zsh
-    gcc
     gnumake
     binutils
     pkg-config
     starship
+    vscode
+    zed-editor
+
+    # Language servers
+    rust-analyzer
+    package-version-server # handles hover information in package.json files
+    nixd # Nix language server
+    nil # Nix language server
+
+    # Compiler, Runtime, Package Management
+    gcc
     cargo
     rustc
     rustup
     nodejs_24
     bun
-    vscode
-    zed-editor
-    rust-analyzer
-    package-version-server
+
+    # Android development
+    android-studio
+    android-tools
+
+    # Virtualization tools
+    virt-manager # KVM
+    qemu # KVM
+    libvirt # KVM
+
     # Internet
     google-chrome
     brave
     discord
+
     # Multimedia
     mpv
     vlc
+
     # Utils
     xclip
     ghostty
@@ -40,5 +58,12 @@
     unrar
     tree
     libnotify
+    transmission_4
+    latte-dock
   ];
+
+  services.transmission = {
+    enable = true;
+    openRPCPort = true;
+  };
 }
