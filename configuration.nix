@@ -4,11 +4,14 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./systems/network.nix
+      ./systems/locale.nix
+      ./hardware/disk.nix
+      ./hardware/gpu.nix
+      ./hardware/keyboard.nix
       ./packages/system.nix
       ./packages/font.nix
       ./programs/zsh.nix
-      ./peripheral/keyboard.nix
-      ./systems/network.nix
     ];
 
   # Bootloader.
@@ -16,18 +19,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5; # list only 5 generations
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Mount Disk
-  fileSystems."/mnt/archive" = {
-    device = "/dev/disk/by-uuid/4e149ab6-4527-4c19-8c7c-11dec5a4107e";
-    fsType = "ext4";
-    options = [ "nofail" "rw" ];
-  };
-  fileSystems."/mnt/storage" = {
-    device = "/dev/disk/by-uuid/3A287E27287DE1F5";
-    fsType = "ntfs";
-    options = [ "nofail" "rw" "uid=1000" "gid=100" ];
-  };
 
   virtualisation.libvirtd.enable = true; # KVM
 
@@ -44,23 +35,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  time.timeZone = "Asia/Bangkok";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "th_TH.UTF-8";
-    LC_IDENTIFICATION = "th_TH.UTF-8";
-    LC_MEASUREMENT = "th_TH.UTF-8";
-    LC_MONETARY = "th_TH.UTF-8";
-    LC_NAME = "th_TH.UTF-8";
-    LC_NUMERIC = "th_TH.UTF-8";
-    LC_PAPER = "th_TH.UTF-8";
-    LC_TELEPHONE = "th_TH.UTF-8";
-    LC_TIME = "th_TH.UTF-8";
-  };
+  
+  # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
+  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;

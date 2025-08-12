@@ -50,6 +50,13 @@
     # Multimedia
     mpv
     vlc
+    
+    # KDE
+    kdePackages.sddm-kcm # allow to customize the login screen
+    # Optional
+    kdePackages.kirigami-addons # KDE's UI framework for creating responsive interfaces
+    kdePackages.kirigami # KDE's UI framework for creating responsive interfaces
+    kdePackages.ksvg # handles SVG rendering
 
     # Utils
     xclip
@@ -63,6 +70,7 @@
     tree
     libnotify
     transmission_4
+    nvtopPackages.v3d # monitor GPU, Provide 'nvtop' command
   ];
 
   services.transmission = {

@@ -9,6 +9,7 @@
     syntaxHighlighting.enable = true;
     shellInit = ''
       eval "$(starship init zsh)";
+      export PATH="$HOME/.cargo/bin:$PATH"
     '';
 
     shellAliases = {
