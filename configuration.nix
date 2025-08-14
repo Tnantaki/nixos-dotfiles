@@ -43,6 +43,18 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  
+  # For customize background, Didn't test is it work
+  # services.displayManager.sddm = {
+  #     enable = true;
+  #     settings = {
+  #       Theme = {
+  #         Background = "/path/to/your/wallpaper.jpg";
+  #         # or for the breeze theme specifically:
+  #         Current = "breeze";
+  #       };
+  #     };
+  #   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -91,7 +103,7 @@
     extraGroups = [ "networkmanager" ];
     shell = pkgs.zsh;
   };
-
+  
   # Install firefox.
   programs.firefox.enable = true;
 

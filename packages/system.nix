@@ -76,5 +76,11 @@
   services.transmission = {
     enable = true;
     openRPCPort = true;
+    user = "tnantaki";
+    group = "users";
+    settings = {
+      download-dir = "/mnt/archive/Downloads";
+      umask = 2; # Makes files readable by group
+    };
   };
 }
