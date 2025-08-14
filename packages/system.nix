@@ -90,55 +90,6 @@
     util-linux
     xz
     systemd
-    
-    # X11 libraries
-    xorg.libX11
-    xorg.libXext
-    xorg.libXrender
-    xorg.libXi
-    xorg.libXrandr
-    xorg.libXcursor
-    xorg.libXinerama
-    xorg.libXfixes
-    xorg.libxkbfile
-    xorg.libxcb
-    xorg.xcbutil
-    xorg.xcbutilkeysyms
-    xorg.xcbutilimage
-    xorg.xcbutilrenderutil
-    
-    # Add these Qt-related packages:
-    libsForQt5.qt5.qtbase
-    libsForQt5.qt5.qtwayland
-    libsForQt5.qt5.qtx11extras
-    libsForQt5.qt5.qtsvg
-    libsForQt5.qt5.qtdeclarative
-    qt5.full  # This includes platform plugins
-    
-    # Additional X11/graphics libraries that might be missing:
-    xorg.libxshmfence
-    xorg.libXdamage
-    xorg.libXxf86vm
-    wayland
-    fontconfig
-    freetype
-    
-    # Audio libraries (Android emulator needs these):
-    libpulseaudio
-  
-    # libraries
-    libxkbcommon
-    libdrm
-    libpng
-    nss
-    nspr
-    expat
-    libbsd
-    xcb-util-cursor
-    
-    # Graphics stack
-    mesa
-    libGL
   ];
   
   services.transmission = {
