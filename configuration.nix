@@ -1,18 +1,23 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./systems/network.nix
-      ./systems/locale.nix
-      ./hardware/disk.nix
-      ./hardware/gpu.nix
-      ./hardware/keyboard.nix
-      ./packages/system.nix
-      ./packages/font.nix
-      ./programs/zsh.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./systems/network.nix
+    ./systems/locale.nix
+    ./hardware/disk.nix
+    ./hardware/gpu.nix
+    ./hardware/keyboard.nix
+    ./packages/system.nix
+    ./packages/font.nix
+    ./programs/zsh.nix
+  ];
+  
+  nix.settings = {
+    # Increase download-buffer size on RAM
+    download-buffer-size = 524288000; # 500 MiB
+    # download-buffer-size = 1073741824; # 1 GiB
+  };
 
   # Bootloader.
   boot.loader.timeout = 0; # boot with latest generations, only hold special key will display boot generation list
@@ -25,7 +30,7 @@
   boot.kernelModules = [ "kvm-amd" ]; # KVM
 
   networking.hostName = "nixos";
-  
+
   networking.networkmanager.enable = true;
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -35,7 +40,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -43,7 +48,9 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  
+
+  programs.partition-manager.enable = true;
+
   # For customize background, Didn't test is it work
   # services.displayManager.sddm = {
   #     enable = true;
@@ -103,7 +110,7 @@
     extraGroups = [ "networkmanager" ];
     shell = pkgs.zsh;
   };
-  
+
   # Install firefox.
   programs.firefox.enable = true;
 

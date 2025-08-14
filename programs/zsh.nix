@@ -10,6 +10,9 @@
     shellInit = ''
       eval "$(starship init zsh)";
       export PATH="$HOME/.cargo/bin:$PATH"
+      
+      export ANDROID_HOME="$HOME/Android/Sdk"
+      export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
     '';
 
     shellAliases = {
@@ -18,6 +21,7 @@
       pbpaste = "xclip -selection c -o";
       dotfile = "zeditor ~/.dotfiles";
       nixtran = "sudo cp -r ~/.dotfiles/* /etc/nixos";
+      
     };
   };
 
