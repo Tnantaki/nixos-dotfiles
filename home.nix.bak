@@ -4,14 +4,14 @@
   home.username = "tnantaki";
   home.homeDirectory = "/home/tnantaki";
 
-  programs.git = {
-    enable = true;
-    userName = "tnantaki";
-    userEmail = "tinyhave@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userName = "tnantaki";
+  #   userEmail = "tinyhave@gmail.com";
+  #   extraConfig = {
+  #     init.defaultBranch = "main";
+  #   };
+  # };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

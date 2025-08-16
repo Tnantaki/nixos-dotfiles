@@ -1,13 +1,10 @@
 { pkgs, ...}:
 
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [ # all user packages
     # Development
-    vim
     wget
     curl
-    git
-    zsh
     gnumake
     binutils
     pkg-config
@@ -20,7 +17,8 @@
     package-version-server # handles hover information in package.json files
     nixd # Nix language server
     nil # Nix language server
-    
+    nixfmt-rfc-style
+
     # For proc-macro compatibility on Rust
     libllvm
     libclang
@@ -37,6 +35,8 @@
     android-studio
     android-tools # adb, fastboot, etc.
     pulseaudio
+    watchman
+    jdk
 
     # Virtualization tools
     virt-manager # KVM
@@ -51,7 +51,7 @@
     # Multimedia
     mpv
     vlc
-    
+
     # KDE
     kdePackages.sddm-kcm # allow to customize the login screen
     # Optional
@@ -72,6 +72,7 @@
     libnotify
     transmission_4
     nvtopPackages.v3d # monitor GPU, Provide 'nvtop' command
+    stow
   ];
 
   programs.nix-ld.enable = true;
@@ -91,7 +92,7 @@
     xz
     systemd
   ];
-  
+
   services.transmission = {
     enable = true;
     openRPCPort = true;

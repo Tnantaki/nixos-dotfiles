@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs"; # ensure home manager using the same version of nixpkgs
+    # home-manager.url = "github:nix-community/home-manager/release-25.05";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs"; # ensure home manager using the same version of nixpkgs
   };
 
   outputs = {self, nixpkgs, home-manager, ...}:
@@ -19,11 +19,11 @@
         modules = [ ./configuration.nix ];
       };
     };
-    homeConfigurations = {
-      tnantaki = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
-      };
-    };
+    # homeConfigurations = {
+    #   tnantaki = home-manager.lib.homeManagerConfiguration {
+    #     inherit pkgs;
+    #     modules = [ ./home.nix ];
+    #   };
+    # };
   };
 }

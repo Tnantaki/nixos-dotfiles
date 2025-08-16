@@ -10,9 +10,9 @@
     ./hardware/disk.nix
     ./hardware/gpu.nix
     ./hardware/keyboard.nix
+    ./packages/programs.nix
     ./packages/system.nix
     ./packages/font.nix
-    ./programs/zsh.nix
   ];
   
   nix.settings = {
@@ -41,7 +41,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ]; # add flake
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -50,8 +50,6 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
-  programs.partition-manager.enable = true;
 
   # For customize background, Didn't test is it work
   # services.displayManager.sddm = {
@@ -70,9 +68,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
