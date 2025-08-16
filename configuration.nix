@@ -19,6 +19,9 @@
     # Increase download-buffer size on RAM
     download-buffer-size = 524288000; # 500 MiB
     # download-buffer-size = 1073741824; # 1 GiB
+    
+    # Flake Cli
+    # experimental-features = [ "nix-command" "flakes" ];
   };
 
   # Bootloader.
@@ -27,21 +30,9 @@
   boot.loader.systemd-boot.configurationLimit = 5; # list only 5 generations
   boot.loader.efi.canTouchEfiVariables = true;
 
-  virtualisation.libvirtd.enable = true; # KVM
-
   boot.kernelModules = [ "kvm-amd" ]; # KVM
-
-  networking.hostName = "nixos";
-
-  networking.networkmanager.enable = true;
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ]; # add flake
+  
+  virtualisation.libvirtd.enable = true; # KVM
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -72,18 +63,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  # services.openssh.enable = true; # Enable the OpenSSH daemon
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
