@@ -11,6 +11,8 @@
     starship
     vscode
     zed-editor
+    kdePackages.kdenlive
+    mkvtoolnix
 
     # Language servers
     rust-analyzer
@@ -73,6 +75,9 @@
     transmission_4
     nvtopPackages.v3d # monitor GPU, Provide 'nvtop' command
     stow
+    dysk # Disk Info display
+    tldr # short form of man command
+    zoxide # cd with cache
   ];
 
   programs.nix-ld.enable = true;

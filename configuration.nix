@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./systems/kde.nix
     ./systems/network.nix
     ./systems/locale.nix
     ./systems/audio.nix
@@ -21,7 +22,7 @@
     # download-buffer-size = 1073741824; # 1 GiB
     
     # Flake Cli
-    # experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   # Bootloader.
@@ -37,22 +38,6 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # For customize background, Didn't test is it work
-  # services.displayManager.sddm = {
-  #     enable = true;
-  #     settings = {
-  #       Theme = {
-  #         Background = "/path/to/your/wallpaper.jpg";
-  #         # or for the breeze theme specifically:
-  #         Current = "breeze";
-  #       };
-  #     };
-  #   };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
