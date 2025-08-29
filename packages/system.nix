@@ -8,11 +8,14 @@
     gnumake
     binutils
     pkg-config
+    openssl
     starship
     vscode
     zed-editor
     kdePackages.kdenlive
     mkvtoolnix
+    dbeaver-bin
+    docker
 
     # Language servers
     rust-analyzer
@@ -24,6 +27,38 @@
     # For proc-macro compatibility on Rust
     libllvm
     libclang
+    
+    #Cromium Dependency
+    chromium
+    glib
+    nss
+    nspr
+    atk
+    at-spi2-atk
+    libdrm
+    gtk3
+    pango
+    cairo
+    gdk-pixbuf
+    harfbuzz
+    freetype
+    fontconfig
+    cups
+    libGL
+    mesa
+    alsa-lib
+    libxkbcommon
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXtst
+    xorg.libXScrnSaver
+    xorg.libXi
+    xorg.libxcb
 
     # Compiler, Runtime, Package Management
     gcc
@@ -32,18 +67,20 @@
     rustup
     nodejs_24
     bun
+    python313Packages.pip
+    python311
 
     # Android development
     android-studio
     android-tools # adb, fastboot, etc.
     pulseaudio
-    watchman
+    # watchman
     jdk
 
     # Virtualization tools
-    virt-manager # KVM
-    qemu # KVM
-    libvirt # KVM
+    # virt-manager # KVM
+    # qemu # KVM
+    # libvirt # KVM
 
     # Internet
     google-chrome
@@ -78,6 +115,13 @@
     dysk # Disk Info display
     tldr # short form of man command
     zoxide # cd with cache
+    easyeffects # custom sound audio
+    imagemagick # create, edit, compose, or convert bitmap images
+    exiftool # display info images
+    upscayl
+    
+    # tmp
+    vulkan-tools
   ];
 
   programs.nix-ld.enable = true;

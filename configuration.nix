@@ -31,9 +31,8 @@
   boot.loader.systemd-boot.configurationLimit = 5; # list only 5 generations
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelModules = [ "kvm-amd" ]; # KVM
-  
-  virtualisation.libvirtd.enable = true; # KVM
+  # boot.kernelModules = [ "kvm-amd" ]; # KVM
+  # virtualisation.libvirtd.enable = true; # KVM
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.

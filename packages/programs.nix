@@ -16,6 +16,9 @@
       enableBashCompletion = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
+      
+      # shellInit = ''
+      # '';
 
       ohMyZsh = {
         enable = true;
