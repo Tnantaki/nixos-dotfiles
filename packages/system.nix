@@ -30,35 +30,6 @@
     
     #Cromium Dependency
     chromium
-    glib
-    nss
-    nspr
-    atk
-    at-spi2-atk
-    libdrm
-    gtk3
-    pango
-    cairo
-    gdk-pixbuf
-    harfbuzz
-    freetype
-    fontconfig
-    cups
-    libGL
-    mesa
-    alsa-lib
-    libxkbcommon
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXrandr
-    xorg.libXrender
-    xorg.libXtst
-    xorg.libXScrnSaver
-    xorg.libXi
-    xorg.libxcb
 
     # Compiler, Runtime, Package Management
     gcc
@@ -103,7 +74,6 @@
     ghostty
     bat
     htop
-    ffmpeg
     file-roller
     rar
     unrar
@@ -118,28 +88,65 @@
     easyeffects # custom sound audio
     imagemagick # create, edit, compose, or convert bitmap images
     exiftool # display info images
-    upscayl
+    upscayl # upscale image
+    dpkg # install deb file
+    ffmpeg
+    libwebp
     
     # tmp
     vulkan-tools
   ];
+  
+  programs.steam.enable = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib
     zlib
-    zstd
-    stdenv.cc.cc
-    curl
-    openssl
-    attr
-    libssh
-    bzip2
-    libxml2
-    acl
-    libsodium
-    util-linux
-    xz
-    systemd
+    
+    # FFmpeg and media libraries
+    ffmpeg-full
+    ffmpeg-full.lib
+    
+    # Graphics
+    libGL
+    libGLU
+    mesa
+    
+    # X11
+    xorg.libX11
+    xorg.libXext
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXfixes
+    xorg.libXdamage
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXinerama
+    xorg.libXScrnSaver
+    xorg.libXtst
+    
+    # GTK/GUI
+    glib
+    gtk3
+    pango
+    gdk-pixbuf
+    cairo
+    atk
+    
+    # Audio
+    alsa-lib
+    pulseaudio
+    
+    # Other common deps
+    fontconfig
+    freetype
+    dbus
+    nspr
+    nss
+    expat
+    libuuid
   ];
 
   services.transmission = {

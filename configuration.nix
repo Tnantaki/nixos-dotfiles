@@ -30,13 +30,21 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5; # list only 5 generations
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # boot.kernelModules = [ "kvm-amd" ]; # KVM
-  # virtualisation.libvirtd.enable = true; # KVM
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  
+  # Kernel modules and parameters
+  boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.kernelParams = [
+    "nvidia_drm.modeset=1"
+    "nvidia_drm.fbdev=1"
+  ];
+  
+  # Environment variables for Wayland + NVIDIA
+  environment.sessionVariables = {
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    NIXOS_OZONE_WL = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";  # Fix cursor issues if any
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
