@@ -18,7 +18,7 @@
     docker
 
     # Language servers
-    rust-analyzer
+    rust-analyzer # use local
     package-version-server # handles hover information in package.json files
     nixd # Nix language server
     nil # Nix language server
@@ -33,9 +33,9 @@
 
     # Compiler, Runtime, Package Management
     gcc
-    cargo
-    rustc
-    rustup
+    # cargo # use local
+    # rustc # use local
+    # rustup # use local
     nodejs_24
     bun
     python313Packages.pip
@@ -92,10 +92,16 @@
     dpkg # install deb file
     ffmpeg
     libwebp
+    postman
+    litecli
     
     # tmp
     vulkan-tools
   ];
+  
+  environment.variables = {
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig"; # Rust need this for openssl
+  };
   
   programs.steam.enable = true;
 
